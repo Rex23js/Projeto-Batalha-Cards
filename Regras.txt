@@ -1,0 +1,30 @@
+Importante: Comente tudo necessário.
+
+1- Tema Livre Mas Deve Seguir a Mesma Logica dos cards, layout e mecânica de luta.
+
+2- Deve Ser Possível Arrastar Os Cards Para As Arenas.
+
+3- Deve Existir Uma Area Onde Estaram O o Log da Batalha
+(Uma Area Onde Mostre Os Acontecimentos dos Turnos de Cada Batalha).
+
+4- Os Cards Devem Ter Uma Arte Conforme o Tema.
+
+5- No Mínimo 2 Abas de Cards (Lugar Onde Mostre Na Tela Os Cards).
+
+6- Um Header e Footer Personalizado Com Background, Border-radius, Tipografia e Etc.
+
+7- Main Ajustado Com Paleta de Cores Coerentes a Arte dos Cards.
+
+8- Editar Imagens e Logo de Acordo Com o Design do Site.
+
+9- Botões Animados, DragDrops Animados, Arenas Animadas, e Log de Luta Animada Com Efeitos de Gradiente, Shadow, Translate, Rotate e Etc ( Ou Seja Utilização de Efeitos Comtemporaneos Para Um Jogo Envolvente e Vivo Com o Objetivo de Uma Melhor Experiencia Visual)
+
+10- Todo o Jogo Deve Estar Devidamente Bem Posicionado (Centralizado e Alinhado Corretamente Com Os Respectivos Itens).
+
+11- Utilizar Objetos/Classes No Java Script Para Os Cards dos Personagens (Colocando Suas Características Como Nome, Classes, Atributos e Etc).
+
+12- Função Para a Logica de Batalha Junto de Um Botão de Reset (Reseta a Luta Desde o Inicio Com Os Respectivos Atributos Restaurados).
+
+13- Efeitos No Arrastar dos Cards e Largar/Soltar Na Arena (Efeitos Visuais Atraentes Como Aumentar o Tamanho Ou Algo que de Um Destaque Indicando a Ação).
+
+14- Persoangens Coerentes Com o Tema Escolhido. 

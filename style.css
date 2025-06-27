@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+}
+
+header {
+  height: 100px;
+  width: 100%;
+  border: 3px solid black;
+}
+
+main {
+  height: 700px;
+  width: 100%;
+  border: 3px solid rgb(0, 162, 255);
+}
+
+.Container_Arena {
+  height: 400px;
+  width: 100%;
+  border: 3px solid rgb(255, 0, 0);
+}
+
+.Container_Cards {
+  height: 300px;
+  width: 100%;
+  border: 3px solid rgb(0, 255, 157);
+}
+
+footer {
+  height: 100px;
+  width: 100%;
+  border: 3px solid black;
+}
+
+.Arena {
+  height: 200px;
+  width: 25%;
+  float: left;
+  border: 3px solid rgb(140, 0, 255);
+}
