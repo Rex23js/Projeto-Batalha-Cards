@@ -4,7 +4,7 @@ Importante: Comente tudo necessário.
 
 2- Deve Ser Possível Arrastar Os Cards Para As Arenas.
 
-3- Deve Existir Uma Area Onde Estaram O o Log da Batalha
+3- Deve Existir Uma Area Onde Estaram O Log da Batalha
 (Uma Area Onde Mostre Os Acontecimentos dos Turnos de Cada Batalha).
 
 4- Os Cards Devem Ter Uma Arte Conforme o Tema.
@@ -27,4 +27,4 @@ Importante: Comente tudo necessário.
 
 13- Efeitos No Arrastar dos Cards e Largar/Soltar Na Arena (Efeitos Visuais Atraentes Como Aumentar o Tamanho Ou Algo que de Um Destaque Indicando a Ação).
 
-14- Persoangens Coerentes Com o Tema Escolhido. 
+14- Personagens Coerentes Com o Tema Escolhido. 
