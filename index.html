@@ -3,44 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <title>Battle</title>
   </head>
   <body>
     <header>
-      <h1 class="Titulo">Batalha Medieval</h1>
+      <h1 class="Titulo">Batalha Dead Cells</h1>
     </header>
 
     <main>
       <!-- Arenas -->
       <section class="Container_Arena">
-        <div class="Arena">Arena 1</div>
+        <div class="Arena" id="arena1">Arena 1</div>
         <div class="Visu"></div>
-        <div class="Arena">Arena 2</div>
+        <div class="Arena" id="arena2">Arena 2</div>
       </section>
 
       <!-- Cards -->
       <section class="Container_Cards">
-        <div class="Cards">Card 1</div>
-        <div class="Cards">Card 2</div>
-        <div class="Cards">Card 3</div>
-        <div class="Cards">Card 4</div>
-        <div class="Cards">Card 5</div>
-        <div class="Cards">Card 6</div>
-        <div class="Cards">Card 7</div>
-        <div class="Cards">Card 8</div>
-        <div class="Cards">Card 9</div>
-        <div class="Cards">Card 10</div>
-        <div class="Cards">Card 11</div>
-        <div class="Cards">Card 12</div>
-        <div class="Cards">Card 13</div>
-        <div class="Cards">Card 14</div>
-        <div class="Cards">Card 15</div>
-        <div class="Cards">Card 16</div>
-        <div class="Cards">Card 17</div>
-        <div class="Cards">Card 18</div>
-        <div class="Cards">Card 19</div>
-        <div class="Cards">Card 20</div>
+        <div
+          class="Card boss"
+          draggable="true"
+          id="card1"
+          title="Servo Mais Leal do Rei"
+        >
+          <img src="Boss_Hand_Of_King.jpg" alt="Card Mao do Rei Boss" />
+          <div class="Card__content">
+            <h3 class="Card__title">The Hand of the King</h3>
+            <p class="Card__type">Boss – High Peak Castle</p>
+            <div class="Card__stats">
+              <span> Atk: 180</span>
+              <span> Def: 250</span>
+            </div>
+          </div>
+        </div>
+        <div class="Card enemy rampager" draggable="true" id="card2">
+          <img src="Enemy_Rampager.jpg" alt="Rampager - Graveyard" />
+          <div class="Card__content">
+            <h3 class="Card__title">Rampager</h3>
+            <p class="Card__type">Enemy – Graveyard</p>
+            <div class="Card__stats">
+              <span>Atk: 200</span>
+              <span>Def: 120</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="Card" draggable="true" id="card3">Card 3</div>
+        <div class="Card" draggable="true" id="card4">Card 4</div>
+        <div class="Card" draggable="true" id="card5">Card 5</div>
+        <div class="Card" draggable="true" id="card6">Card 6</div>
+        <div class="Card" draggable="true" id="card7">Card 7</div>
+        <div class="Card" draggable="true" id="card8">Card 8</div>
       </section>
     </main>
   </body>
