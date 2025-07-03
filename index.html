@@ -17,49 +17,152 @@
     </header>
 
     <main>
-      <!-- Arenas -->
       <section class="Container_Arena">
         <div class="Arena" id="arena1">Arena 1</div>
         <div class="Visu"></div>
         <div class="Arena" id="arena2">Arena 2</div>
       </section>
 
-      <!-- Cards -->
+      <section class="Game_Controls">
+        <button id="startButton">Iniciar Batalha</button>
+        <button id="resetButton">Resetar Jogo</button>
+      </section>
+
       <section class="Container_Cards">
         <div
-          class="Card boss"
+          class="Card theme-castle"
           draggable="true"
           id="card1"
           title="Servo Mais Leal do Rei"
         >
-          <img src="Boss_Hand_Of_King.jpg" alt="Card Mao do Rei Boss" />
+          <img src="The_Hand_of_the_King.webp" alt="Card Mao do Rei Boss" />
           <div class="Card__content">
             <h3 class="Card__title">The Hand of the King</h3>
             <p class="Card__type">Boss – High Peak Castle</p>
             <div class="Card__stats">
-              <span> Atk: 180</span>
-              <span> Def: 250</span>
-            </div>
-          </div>
-        </div>
-        <div class="Card enemy rampager" draggable="true" id="card2">
-          <img src="Enemy_Rampager.jpg" alt="Rampager - Graveyard" />
-          <div class="Card__content">
-            <h3 class="Card__title">Rampager</h3>
-            <p class="Card__type">Enemy – Graveyard</p>
-            <div class="Card__stats">
-              <span>Atk: 200</span>
-              <span>Def: 120</span>
+              <span> Atk: 150</span>
+              <span> Def: 200</span>
             </div>
           </div>
         </div>
 
-        <div class="Card" draggable="true" id="card3">Card 3</div>
-        <div class="Card" draggable="true" id="card4">Card 4</div>
-        <div class="Card" draggable="true" id="card5">Card 5</div>
-        <div class="Card" draggable="true" id="card6">Card 6</div>
-        <div class="Card" draggable="true" id="card7">Card 7</div>
-        <div class="Card" draggable="true" id="card8">Card 8</div>
+        <div
+          class="Card theme-collector"
+          draggable="true"
+          id="card5"
+          title="O Colecionador"
+        >
+          <img src="The_Collector_(Boss).webp" alt="The Collector" />
+          <div class="Card__content">
+            <h3 class="Card__title">The Collector</h3>
+            <p class="Card__type">Boss – Hand of the King's Room / Astrolab</p>
+            <div class="Card__stats">
+              <span>Atk: 180</span>
+              <span>Def: 250</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="Card theme-haven"
+          draggable="true"
+          id="card3"
+          title="O Guardião Adormecido"
+        >
+          <img src="The_Giant.webp" alt="The Giant - Guardian's Haven" />
+          <div class="Card__content">
+            <h3 class="Card__title">The Giant</h3>
+            <p class="Card__type">Boss – Guardian's Haven</p>
+            <div class="Card__stats">
+              <span>Atk: 120</span>
+              <span>Def: 300</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="Card theme-caverns"
+          draggable="true"
+          id="card6"
+          title="Quebra-Chão"
+        >
+          <img src="Ground_Shaker.webp" alt="Ground Shaker" />
+          <div class="Card__content">
+            <h3 class="Card__title">Ground Shaker</h3>
+            <p class="Card__type">Enemy – Fractured Shrines / Cavern</p>
+            <div class="Card__stats">
+              <span>Atk: 140</span>
+              <span>Def: 160</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="Card theme-clocktower"
+          draggable="true"
+          id="card7"
+          title="A Guardiã do Tempo"
+        >
+          <img src="The_Time_Keeper.webp" alt="The Time Keeper" />
+          <div class="Card__content">
+            <h3 class="Card__title">The Time Keeper</h3>
+            <p class="Card__type">Boss – Clock Tower</p>
+            <div class="Card__stats">
+              <span>Atk: 170</span>
+              <span>Def: 220</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="Card theme-sewers"
+          draggable="true"
+          id="card8"
+          title="Zumbi Corpulento"
+        >
+          <img src="Corpulent_Zombie.webp" alt="Corpulent Zombie" />
+          <div class="Card__content">
+            <h3 class="Card__title">Corpulent Zombie</h3>
+            <p class="Card__type">Enemy – Toxic Sewers / Ancient Sewers</p>
+            <div class="Card__stats">
+              <span>Atk: 140</span>
+              <span>Def: 180</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="Card theme-castle"
+          draggable="true"
+          id="card4"
+          title="Lancer - Castelo do Pico Alto"
+        >
+          <img src="Lancer.webp" alt="Lancer - High Peak Castle" />
+          <div class="Card__content">
+            <h3 class="Card__title">Lancer</h3>
+            <p class="Card__type">Enemy – High Peak Castle</p>
+            <div class="Card__stats">
+              <span>Atk: 140</span>
+              <span>Def: 150</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="Card theme-graveyard" draggable="true" id="card2">
+          <img
+            src="Rampager.webp"
+            alt="Rampager - Graveyard"
+            title="Rampager - Graveyard"
+          />
+          <div class="Card__content">
+            <h3 class="Card__title">Rampager</h3>
+            <p class="Card__type">Enemy – Graveyard</p>
+            <div class="Card__stats">
+              <span>Atk: 170</span>
+              <span>Def: 120</span>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   </body>

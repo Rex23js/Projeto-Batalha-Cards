@@ -17,26 +17,72 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ccc;
+  /* Gradiente mais sutil e temática */
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 5, 20, 0.8),
+    rgba(20, 10, 40, 0.8)
+  ); /* Transição de roxo escuro para um roxo mais azulado */
+  border-bottom: 2px solid #aa1c52;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidade */
 }
 
 /* Titulo */
-.titulo {
-  font-size: 2rem;
+.Titulo {
+  font-size: 2.2rem; /* Levemente maior */
   margin: 0;
+  color: #f0e6ff;
+  /* Text shadow mais elaborado para efeito de brilho e neon */
+  text-shadow: 0 0 10px #ff00de, 0 0 20px #ff00de, 0 0 30px #ff00de,
+    0 0 40px #ff00de; /* Múltiplas sombras para um brilho mais intenso */
 }
 
-/* Seção das arenas */
+/* Seção das arenas (Container_Arena) */
 .Container_Arena {
   display: grid;
   grid-template-areas: "Arena1 Visu Arena2";
   justify-content: center;
   align-items: center;
-  border: #000 1px solid;
-  margin: 10px 0px 0 0;
+  margin: 40px 0px 0 0; /* Aumenta a margem superior para espaçamento */
   padding: 20px;
+  gap: 30px; /* Aumenta o espaçamento entre os elementos */
+  /* Remove a altura fixa para que o conteúdo determine a altura */
+  /* backdrop-filter: blur(5px); */ /* Descomente para um efeito de blur no fundo */
+  border-radius: 15px; /* Bordas levemente arredondadas */
+  /* background-color: rgba(0, 0, 0, 0.2); */ /* Descomente para um fundo sutil no container */
+}
+
+/* ================================== */
+/* === BOTÕES DE BATALHA === */
+/* ================================== */
+
+.Game_Controls {
+  display: flex;
+  justify-content: center;
   gap: 20px;
-  height: 300px;
+  margin-top: 30px;
+}
+
+#startButton {
+  padding: 10px 20px;
+  font-family: "Press Start 2P", monospace;
+  background-color: #aa1c52;
+  color: #f0e6ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+#resetButton {
+  padding: 10px 20px;
+  font-family: "Press Start 2P", monospace;
+  background-color: #333;
+  color: #f0e6ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
 }
 
 /* Arenas */
@@ -44,28 +90,79 @@ header {
   border-radius: 10px;
   width: 250px;
   height: 300px;
-  background-color: #eee;
+  background-color: rgba(
+    10,
+    0,
+    20,
+    0.6
+  ); /* Fundo mais escuro e opaco, com toque de roxo */
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #000;
+  border: 3px solid #aa1c52; /* Borda sólida e mais grossa, combinando com o tema do castelo */
   margin: 0 20px 0 20px;
+  color: #f0e6ff; /* Cor do texto mais clara */
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s; /* Adiciona box-shadow à transição */
+  box-shadow: 0 0 15px rgba(255, 0, 100, 0.1); /* Sombra sutil padrão */
 }
 
-/* Area de Visualizacao da batalha*/
+.Arena.drag-over {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #ff00de; /* Cor vibrante para o drag-over */
+  box-shadow: 0 0 25px rgba(255, 0, 100, 0.6); /* Sombra mais intensa no drag-over */
+}
+
+/* Area de Visualizacao da batalha (Visu) */
 .Visu {
   width: 400px;
-  height: 70px;
-  background-color: #999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 250px; /* Aumenta a altura para ter mais espaço para o log */
+  background-color: rgba(10, 0, 20, 0.7);
+  display: flex; /* Mantém como flex para centralizar o texto inicial, mas o overflow será tratado */
+  flex-direction: column; /* Para empilhar as entradas do log */
+  align-items: flex-start; /* Alinha o texto à esquerda */
+  justify-content: flex-start; /* Alinha o conteúdo ao topo */
   font-weight: bold;
+  color: #f0e6ff;
+  border: 2px solid #aa1c52;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 0, 100, 0.3);
+  overflow-y: auto; /* Adiciona barra de rolagem vertical se o conteúdo exceder */
+  padding: 10px; /* Adiciona padding interno */
+  font-size: 0.7rem; /* Reduz um pouco o tamanho da fonte para caber mais texto */
+  line-height: 1.3; /* Espaçamento entre linhas */
+  text-align: left; /* Garante que o texto esteja alinhado à esquerda */
+}
+
+/* Estilo para cada entrada de log */
+.Visu .log-entry {
+  margin-bottom: 5px; /* Espaçamento entre as mensagens do log */
+  word-wrap: break-word; /* Quebra palavras longas que excedem a largura */
+  overflow-wrap: break-word; /* Compatibilidade com browsers */
+  width: 100%; /* Garante que o parágrafo ocupe a largura total do container */
+  white-space: pre-wrap; /* Preserva quebras de linha e espaços, mas permite quebra automática */
+}
+
+/* Opcional: Estilo para a barra de rolagem */
+.Visu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.Visu::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.Visu::-webkit-scrollbar-thumb {
+  background: #aa1c52;
+  border-radius: 10px;
+}
+
+.Visu::-webkit-scrollbar-thumb:hover {
+  background: #ff00de;
 }
 
 /* Seção dos cards */
 .Container_Cards {
-  border: #000 1px solid;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -74,31 +171,34 @@ header {
   padding: 20px;
 }
 
-/* Cards */
+/* ================================== */
+/* === ESTRUTURA BASE DOS CARDS === */
+/* ================================== */
 
 .Card {
   width: 200px;
   height: 250px;
-  background-color: #dddddd;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border: 2px solid #000;
   cursor: grab;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
   font-family: "Press Start 2P", monospace;
   font-size: 8px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.2),
-    inset 0 0 10px rgba(255, 255, 255, 0.1);
+  background-color: #dddddd; /* Cor padrão caso nenhuma classe de tema seja aplicada */
 }
 
 .Card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.4),
-    inset 0 0 15px rgba(255, 255, 255, 0.2);
+  transform: scale(1.05) translateY(-5px);
+}
+
+.Card:active {
+  cursor: grabbing;
+  transform: scale(1.08);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.5);
 }
 
 .Card img {
@@ -110,7 +210,6 @@ header {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   display: block;
-  border-bottom: #aa1c52 2px solid;
 }
 
 .Card__content {
@@ -120,18 +219,17 @@ header {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
 }
 
 .Card__title {
   font-size: 14px;
   font-weight: bold;
   margin: 0.3rem 0;
-  color: #3c3488;
 }
 
 .Card__type {
   font-size: 10px;
-  color: #3c3488;
   margin-bottom: 0.5rem;
 }
 
@@ -140,28 +238,210 @@ header {
   display: flex;
   justify-content: space-around;
   font-size: 12px;
-  background-color: rgba(0, 0, 0, 0.05);
   padding: 0.3rem;
-  border-top: 1px solid #3c3488;
-  color: #f0e6ff;
+  border-top: 1px solid;
 }
 
-.Card.boss {
+/* ===================================== */
+/* === CLASSES MODIFICADORAS (TEMAS) === */
+/* ===================================== */
+
+/* Tema: High Peak Castle (Hand of the King) */
+.theme-castle {
   background: linear-gradient(#2c001e, #3e0033);
   border: 2px solid #aa1c52;
   box-shadow: 0 0 10px rgba(255, 0, 100, 0.3);
-  color: #3c3488;
+}
+.theme-castle .Card__title,
+.theme-castle .Card__type {
+  color: #ffc2e8;
+}
+.theme-castle .Card__stats {
+  border-top-color: #aa1c52;
+  color: #f0e6ff;
+}
+.theme-castle img {
+  border-bottom: #aa1c52 2px solid;
 }
 
-.Card.enemy {
+/* Tema: Graveyard (Rampager) */
+.theme-graveyard {
   background: linear-gradient(#002222, #003333);
   border: 2px solid #00cccc;
-  color: #ccf2f2;
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
 }
+.theme-graveyard .Card__title,
+.theme-graveyard .Card__type {
+  color: #99ffff;
+}
+.theme-graveyard .Card__stats {
+  border-top-color: #00cccc;
+  color: #ccf2f2;
+}
+.theme-graveyard img {
+  border-bottom: #00cccc 2px solid;
+}
 
-.Card.rampager {
-  border-color: #22ffcc;
-  box-shadow: 0 0 15px rgba(34, 255, 204, 0.3);
-  color: #33ff99;
+/* Tema: Prisoners' Quarters (Undead Archer) */
+.theme-prison {
+  background: linear-gradient(#2a2a2a, #4a4a4a);
+  border: 2px solid #787878;
+  box-shadow: 0 0 10px rgba(180, 180, 180, 0.2);
+}
+.theme-prison .Card__title,
+.theme-prison .Card__type {
+  color: #e0e0e0;
+}
+.theme-prison .Card__stats {
+  border-top-color: #787878;
+  color: #cccccc;
+}
+.theme-prison img {
+  border-bottom: #787878 2px solid;
+}
+
+/* Tema para o card do Gigante - Guardian's Haven */
+.Card.theme-haven {
+  /* Fundo: Gradiente de cinzas escuros com um toque de azul/roxo para pedra e energia */
+  background: linear-gradient(
+    145deg,
+    #2a2a3a,
+    #1e1e2e
+  ); /* Tons profundos de cinza-azulado/roxo escuro */
+  /* Borda: Cor que remete a cristais ou veias de energia na pedra */
+  border: 2px solid #6a5acd; /* Um roxo/azul mais vibrante, como um cristal */
+  /* Sombra: Um brilho sutil que pode ser de energia ou de luz refletida em cristais */
+  box-shadow: 0 0 15px rgba(106, 90, 205, 0.6); /* Sombra com a cor da borda, mais intensa */
+}
+
+/* Cores do texto para contraste com o fundo escuro */
+.Card.theme-haven .Card__title {
+  color: #e0e0ff; /* Branco azulado claro para o título */
+  /* Efeito de luz para o título, como nos outros cards */
+  text-shadow: 0 0 8px rgba(106, 90, 205, 0.9); /* Sombra de texto brilhante */
+}
+
+.Card.theme-haven .Card__type {
+  color: #c0c0d0; /* Cinza claro para o tipo */
+}
+
+.Card.theme-haven .Card__stats {
+  border-top-color: #6a5acd; /* Borda superior dos stats com a cor do cristal */
+  color: #d0d0e0; /* Cor dos stats */
+}
+
+/* Borda da imagem dentro do card */
+.Card.theme-haven img {
+  border-bottom: #6a5acd 2px solid; /* Borda inferior da imagem com a cor do cristal */
+}
+
+/* Efeito de hover para o card do Gigante*/
+.Card.theme-haven:hover {
+  transform: translateY(-5px) scale(1.02); /* Leve levantamento e aumento */
+  /* Brilho mais intenso no hover */
+  box-shadow: 0 0 25px rgba(106, 90, 205, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.3); /* Combina a sombra do tema com um brilho branco sutil */
+  cursor: grab; /* Mantém o cursor de grab */
+}
+
+/* Tema: Caverns/Fractured Shrines (Ground Shaker) */
+.theme-caverns {
+  background: linear-gradient(#3a2a20, #5a4a30); /* Tons de marrom e terra */
+  border: 2px solid #8c6a3c; /* Borda em tom de terra */
+  box-shadow: 0 0 10px rgba(150, 100, 50, 0.3); /* Sombra em tom terroso */
+}
+.theme-caverns .Card__title,
+.theme-caverns .Card__type {
+  color: #fff8e0; /* Cor de texto mais clara, amarelada */
+}
+.theme-caverns .Card__stats {
+  border-top-color: #8c6a3c;
+  color: #eee8d9; /* Cor de texto para stats */
+}
+.theme-caverns img {
+  border-bottom: #8c6a3c 2px solid;
+}
+
+/* Tema: Clock Tower (The Time Keeper) */
+.theme-clocktower {
+  background: linear-gradient(
+    #1c0a2a,
+    #33004d
+  ); /* Tons de roxo e azul escuro */
+  border: 2px solid #a832a8; /* Roxo brilhante */
+  box-shadow: 0 0 10px rgba(168, 50, 168, 0.5); /* Sombra roxa forte */
+}
+.theme-clocktower .Card__title,
+.theme-clocktower .Card__type {
+  color: #ffbfff; /* Rosa claro para o texto */
+}
+.theme-clocktower .Card__stats {
+  border-top-color: #a832a8;
+  color: #f7e0ff; /* Cor de texto para stats */
+}
+.theme-clocktower img {
+  border-bottom: #a832a8 2px solid;
+}
+
+/* Tema: Toxic Sewers / Ancient Sewers (Corpulent Zombie) */
+.theme-sewers {
+  background: linear-gradient(
+    #1a2a1a,
+    #2a4a2a
+  ); /* Tons de verde escuro e pântano */
+  border: 2px solid #5a8a5a; /* Verde musgo */
+  box-shadow: 0 0 10px rgba(90, 138, 90, 0.4); /* Sombra verde escura */
+}
+.theme-sewers .Card__title,
+.theme-sewers .Card__type {
+  color: #e0ffe0; /* Verde claro para o texto */
+}
+.theme-sewers .Card__stats {
+  border-top-color: #5a8a5a;
+  color: #c0f0c0; /* Cor de texto para stats */
+}
+.theme-sewers img {
+  border-bottom: #5a8a5a 2px solid;
+}
+
+/* Tema: The Collector (Hand of the King's Room / Astrolab) */
+.theme-collector {
+  background: linear-gradient(
+    #0a1a2a,
+    #00334d
+  ); /* Tons de azul escuro e ciano */
+  border: 2px solid #00aaff; /* Azul brilhante/ciano */
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.6); /* Sombra azul forte e luminosa */
+}
+.theme-collector .Card__title,
+.theme-collector .Card__type {
+  color: #aaffff; /* Ciano claro para o texto */
+}
+.theme-collector .Card__stats {
+  border-top-color: #00aaff;
+  color: #e0faff; /* Cor de texto para stats */
+}
+.theme-collector img {
+  border-bottom: #00aaff 2px solid;
+}
+
+/* Tema: Prisoners' Quarters (Lancer) */
+.theme-prison {
+  background: linear-gradient(
+    #2c3e50,
+    #34495e
+  ); /* Tons mais profundos de cinza-azulado */
+  border: 2px solid #5a7d9b; /* Borda em um tom de azul metálico/ferro */
+  box-shadow: 0 0 10px rgba(90, 125, 155, 0.3); /* Sombra suave em tom azulado */
+}
+.theme-prison .Card__title,
+.theme-prison .Card__type {
+  color: #ecf0f1; /* Cor de texto claro para contraste */
+}
+.theme-prison .Card__stats {
+  border-top-color: #5a7d9b;
+  color: #bdc3c7; /* Cor de texto para stats, ligeiramente mais escura */
+}
+.theme-prison img {
+  border-bottom: #5a7d9b 2px solid;
 }
