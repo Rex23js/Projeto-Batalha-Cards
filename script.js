@@ -237,7 +237,7 @@ function updateLog(message) {
 }
 
 // =====================================
-// TÓPICO 6: LÓGICA DE BATALHA (ALTERADA: Ataque diminui Defesa diretamente)
+// TÓPICO 6: LÓGICA DE BATALHA
 // =====================================
 
 function startBattle() {
@@ -258,27 +258,89 @@ function startBattle() {
   startButton.disabled = true;
   startButton.style.opacity = "0.5";
 
+  // Exibindo Defesa inicial no log com um pequeno atraso
+  setTimeout(() => {
+    updateLog(
+      `Defesa inicial de "${cardInArena1.name}": ${cardInArena1.currentDef}`
+    );
+  }, 500);
+  setTimeout(() => {
+    updateLog(
+      `Defesa inicial de "${cardInArena2.name}": ${cardInArena2.currentDef}`
+    );
+  }, 1000);
+
   let turn = 1;
-  const maxTurns = 3; // Mantido para segurança, mas a batalha deve acabar antes
 
-  // Exibindo Defesa inicial no log
-  updateLog(
-    `Defesa inicial de "${cardInArena1.name}": ${cardInArena1.currentDef}`
-  );
-  updateLog(
-    `Defesa inicial de "${cardInArena2.name}": ${cardInArena2.currentDef}`
-  );
+  function executeTurn() {
+    // Condição de parada da batalha
+    if (cardInArena1.currentDef <= 0 || cardInArena2.currentDef <= 0) {
+      setTimeout(endBattle, 1000); // Encerra a batalha após um segundo
+      return;
+    }
 
-  const battleInterval = setInterval(() => {
-    if (
-      turn > maxTurns ||
-      cardInArena1.currentDef <= 0 ||
-      cardInArena2.currentDef <= 0
-    ) {
-      // Fim da batalha
-      clearInterval(battleInterval);
-      isBattleInProgress = false; // Batalha terminou
+    let delay = 1000; // Atraso inicial para o início do turno
 
+    // Log do número do turno
+    setTimeout(() => {
+      updateLog(`--- Turno ${turn} ---`);
+    }, delay);
+    delay += 1000; // Aumenta o atraso para a próxima linha
+
+    // Ataque do Card 1
+    setTimeout(() => {
+      const damage = cardInArena1.currentAtk;
+      cardInArena2.currentDef -= damage;
+      updateLog(
+        `"${cardInArena1.name}" atacou "${cardInArena2.name}" causando ${damage} de dano.`
+      );
+    }, delay);
+    delay += 1000;
+
+    // Log da defesa restante do Card 2
+    setTimeout(() => {
+      updateLog(
+        `Defesa de "${cardInArena2.name}": ${Math.max(
+          0,
+          cardInArena2.currentDef
+        )}`
+      );
+    }, delay);
+    delay += 1000;
+
+    // Verifica se o Card 2 pode revidar
+    if (cardInArena2.currentDef > 0) {
+      // Ataque do Card 2
+      setTimeout(() => {
+        const damage = cardInArena2.currentAtk;
+        cardInArena1.currentDef -= damage;
+        updateLog(
+          `"${cardInArena2.name}" atacou "${cardInArena1.name}" causando ${damage} de dano.`
+        );
+      }, delay);
+      delay += 1000;
+
+      // Log da defesa restante do Card 1
+      setTimeout(() => {
+        updateLog(
+          `Defesa de "${cardInArena1.name}": ${Math.max(
+            0,
+            cardInArena1.currentDef
+          )}`
+        );
+      }, delay);
+      delay += 1000;
+    }
+
+    turn++;
+    // Chama o próximo turno
+    setTimeout(executeTurn, delay);
+  }
+
+  function endBattle() {
+    let finalMessageDelay = 0;
+
+    setTimeout(() => {
       if (cardInArena1.currentDef <= 0 && cardInArena2.currentDef <= 0) {
         updateLog("Ambos os combatentes caíram! É um empate mortal!");
       } else if (cardInArena1.currentDef <= 0) {
@@ -286,49 +348,21 @@ function startBattle() {
       } else {
         updateLog(`"${cardInArena1.name}" VENCEU a batalha!`);
       }
+    }, finalMessageDelay);
+    finalMessageDelay += 1000;
+
+    setTimeout(() => {
       updateLog("--- BATALHA ENCERRADA ---");
-      // O botão de reset agora RECARREGA A PÁGINA, então não precisamos reabilitá-lo aqui.
-      // Ele está sempre ativo para recarregar.
-      return;
-    }
+      resetBattleState(); // Chama a nova função para resetar o estado do jogo
+    }, finalMessageDelay);
+  }
 
-    updateLog(`--- Turno ${turn} ---`);
-
-    // Turno do Card 1 atacando Card 2
-    // O ataque do Card 1 diminui diretamente a defesa do Card 2
-    cardInArena2.currentDef -= cardInArena1.currentAtk;
-    updateLog(
-      `"${cardInArena1.name}" atacou "${cardInArena2.name}" causando ${cardInArena1.currentAtk} de dano.`
-    );
-    updateLog(
-      `Defesa de "${cardInArena2.name}": ${Math.max(
-        0,
-        cardInArena2.currentDef
-      )}`
-    );
-
-    // Verifica se Card 2 ainda está "vivo" para revidar
-    if (cardInArena2.currentDef > 0) {
-      // Turno do Card 2 atacando Card 1
-      // O ataque do Card 2 diminui diretamente a defesa do Card 1
-      cardInArena1.currentDef -= cardInArena2.currentAtk;
-      updateLog(
-        `"${cardInArena2.name}" atacou "${cardInArena1.name}" causando ${cardInArena2.currentAtk} de dano.`
-      );
-      updateLog(
-        `Defesa de "${cardInArena1.name}": ${Math.max(
-          0,
-          cardInArena1.currentDef
-        )}`
-      );
-    }
-
-    turn++;
-  }, 2000); // Intervalo de 2 segundos entre os turnos
+  // Inicia o primeiro turno após a exibição dos status iniciais
+  setTimeout(executeTurn, 2500);
 }
 
 // =====================================
-// TÓPICO 7: FUNÇÃO DE RESET DO JOGO (ALTERADA: Recarrega a página)
+// TÓPICO 7: FUNÇÃO DE RESET DO JOGO (Hard Reset - Recarrega a página)
 // =====================================
 
 function resetGame() {
@@ -336,6 +370,36 @@ function resetGame() {
   // Isso reseta o estado do JavaScript, do DOM, e de todos os cards para o início.
   location.reload();
   // Qualquer código abaixo desta linha não será executado, pois a página será recarregada.
+}
+
+// =====================================
+// TÓPICO 7.1: FUNÇÃO PARA RESETAR O ESTADO DA BATALHA (Soft Reset)
+// =====================================
+function resetBattleState() {
+  isBattleInProgress = false; // Permite iniciar uma nova batalha
+
+  // Habilita o botão Iniciar Batalha
+  startButton.disabled = false;
+  startButton.style.opacity = "1";
+
+  // Reabilita todos os cards na lista original e reseta seus atributos
+  allCards.forEach((cardElement) => {
+    cardElement.draggable = true;
+    cardElement.style.opacity = "1";
+    cardElement.style.cursor = "grab";
+  });
+
+  cardData.forEach((card) => {
+    card.resetStats(); // Reseta ATK e DEF para os valores base
+  });
+
+  // Limpa as arenas visualmente e remove as referências dos cards
+  arena1.innerHTML = "Arena 1";
+  arena2.innerHTML = "Arena 2";
+  cardInArena1 = null;
+  cardInArena2 = null;
+
+  updateLog("Pronto para uma nova batalha! Posicione seus cards.");
 }
 
 // =====================================

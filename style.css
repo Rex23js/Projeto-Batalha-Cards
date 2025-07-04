@@ -169,6 +169,14 @@ header {
   margin-top: 50px;
   gap: 20px;
   padding: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 5, 20, 0.8),
+    rgba(20, 10, 40, 0.8)
+  ); /* Transição de roxo escuro para um roxo mais azulado */
+  border-top: 2px solid #aa1c52;
+  border-bottom: 2px solid #aa1c52;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidade */
 }
 
 /* ================================== */
